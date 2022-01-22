@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './App.css';
 import Timer from './components/Timer';
 import Toggle from './components/Toggle';
-import './App.css';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme, GlobalStyles } from './theme';
 
 const App = () => {
+  const [theme, setTheme] = useState('dark');
+
   return (
-    <>
+    <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+      <GlobalStyles />
       <Timer />
-      <Toggle />
-    </>
+      <Toggle setTheme={setTheme} theme={theme} />
+    </ThemeProvider>
   );
 };
 

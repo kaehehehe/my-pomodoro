@@ -7,12 +7,15 @@ const Container = styled.div`
   right: 10px;
 `;
 
-const Toggle = () => {
+const Toggle = ({ theme, setTheme }) => {
+  const handleToggle = () => {
+    theme === 'dark' ? setTheme('light') : setTheme('dark');
+  };
   return (
     <Container>
-      <label className='toggle'>
+      <label className="toggle">
         <input type="checkbox" />
-        <span className='slider' />
+        <span className="slider" onClick={handleToggle} />
       </label>
     </Container>
   );

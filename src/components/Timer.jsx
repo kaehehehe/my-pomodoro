@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import PlayBtn from './PlayBtn';
 import PauseBtn from './PauseBtn';
+import { GlobalStyles } from '../theme';
+import styled from 'styled-components';
+
+const StyledTimer = styled.div`
+  color: ${(props) => props.theme.fontColor};
+`;
 
 const Timer = () => {
   const [isPaused, setIsPaused] = useState(true);
@@ -32,7 +38,8 @@ const Timer = () => {
 
   return (
     <>
-      <div>{`${minutes} : ${seconds}`}</div>
+      <GlobalStyles />
+      <StyledTimer>{`${minutes} : ${seconds}`}</StyledTimer>
       {isPaused ? (
         <PlayBtn handlePlayBtn={handlePlayBtn} />
       ) : (
