@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import '../styles/toggle.css';
+import { GlobalStyles } from '../styles/theme';
 
 const Container = styled.div`
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 20px;
+  right: 20px;
 `;
 
 const Toggle = ({ theme, setTheme }) => {
