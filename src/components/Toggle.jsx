@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import '../styles/toggle.css';
-import { GlobalStyles } from '../styles/theme';
 
 const Container = styled.div`
   position: absolute;
