@@ -16,4 +16,9 @@ button {
   outline: none;
   border: none;
   cursor: pointer;
+  transition: all 250ms ease-in;
+}
+
+button:active {
+  transform: scale(0.9);
 }
