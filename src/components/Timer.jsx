@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PlayBtn from './PlayBtn';
 import PauseBtn from './PauseBtn';
 import Modal from './Modal';
@@ -25,6 +25,7 @@ const Timer = () => {
   const [minutes, setMinutes] = useState('25');
   const [seconds, setSeconds] = useState('00');
   const [open, setOpen] = useState(false);
+  const intervalRef = useRef(null);
   let TIME = 25 * 60 - 1;
 
   const timer = () => {
@@ -35,31 +36,33 @@ const Timer = () => {
     setSeconds(sec < 10 ? `0${sec}` : sec);
   };
 
-  const handlePlayBtn = () => {
+  const start = () => {
     setIsPaused(!isPaused);
-    const timeoutId = setInterval(() => {
+    intervalRef.current = setInterval(() => {
       timer();
       if (TIME === -1) {
-        clearInterval(timeoutId);
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
       }
     }, 1000);
   };
 
-  const handlePauseBtn = () => {
-    setOpen(true);
+  const reset = () => {
+    setIsPaused(!isPaused);
+    clearInterval(intervalRef.current);
+    intervalRef.current = null;
+    setMinutes('25');
+    setSeconds('00');
+    setOpen(false);
   };
 
   return (
     <>
       <GlobalStyles />
-      {open && <Modal setOpen={setOpen} />}
+      {open && <Modal setOpen={setOpen} reset={reset} />}
       <Container>
         <StyledTimer>{`${minutes} : ${seconds}`}</StyledTimer>
-        {isPaused ? (
-          <PlayBtn handlePlayBtn={handlePlayBtn} />
-        ) : (
-          <PauseBtn handlePauseBtn={handlePauseBtn} />
-        )}
+        {isPaused ? <PlayBtn start={start} /> : <PauseBtn setOpen={setOpen} />}
       </Container>
     </>
   );

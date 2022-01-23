@@ -5,9 +5,9 @@ import { Button } from '../styles/button';
 
 const StyledBtn = styled(Button)``;
 
-const PlayBtn = ({ handlePlayBtn }) => {
+const PlayBtn = ({ start }) => {
   return (
-    <StyledBtn onClick={handlePlayBtn}>
+    <StyledBtn onClick={start}>
       <FaPlayCircle />
     </StyledBtn>
   );

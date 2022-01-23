@@ -5,9 +5,9 @@ import { Button } from '../styles/button';
 
 const StyledBtn = styled(Button)``;
 
-const PauseBtn = ({ handlePauseBtn }) => {
+const PauseBtn = ({ setOpen }) => {
   return (
-    <StyledBtn onClick={handlePauseBtn}>
+    <StyledBtn onClick={() => setOpen(true)}>
       <FaPauseCircle />
     </StyledBtn>
   );

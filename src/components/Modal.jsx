@@ -50,7 +50,7 @@ const NoBtn = styled(YesBtn)`
   margin-right: 0;
 `;
 
-const Modal = ({ setOpen }) => {
+const Modal = ({ setOpen, reset }) => {
   const handleClickContainer = (e) => {
     if (e.target.id === 'container') {
       setOpen(false);
@@ -58,7 +58,7 @@ const Modal = ({ setOpen }) => {
   };
 
   const handleYesBtn = () => {
-    // 타이머 종료
+    reset();
   };
 
   const handleNoBtn = () => {
