@@ -1,17 +1,30 @@
 import React, { useState } from 'react';
 import PlayBtn from './PlayBtn';
 import PauseBtn from './PauseBtn';
-import { GlobalStyles } from '../theme';
+import Modal from './Modal';
+import { GlobalStyles } from '../styles/theme';
 import styled from 'styled-components';
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+`;
+
 const StyledTimer = styled.div`
-  color: ${(props) => props.theme.fontColor};
+  color: ${({ theme }) => theme.mainColor};
+  font-size: 60px;
+  text-align: center;
+  margin-bottom: 20px;
 `;
 
 const Timer = () => {
   const [isPaused, setIsPaused] = useState(true);
   const [minutes, setMinutes] = useState('25');
   const [seconds, setSeconds] = useState('00');
+  const [open, setOpen] = useState(false);
   let TIME = 25 * 60 - 1;
 
   const timer = () => {
@@ -33,18 +46,21 @@ const Timer = () => {
   };
 
   const handlePauseBtn = () => {
-    setIsPaused(!isPaused);
+    setOpen(true);
   };
 
   return (
     <>
       <GlobalStyles />
-      <StyledTimer>{`${minutes} : ${seconds}`}</StyledTimer>
-      {isPaused ? (
-        <PlayBtn handlePlayBtn={handlePlayBtn} />
-      ) : (
-        <PauseBtn handlePauseBtn={handlePauseBtn} />
-      )}
+      {open && <Modal setOpen={setOpen} />}
+      <Container>
+        <StyledTimer>{`${minutes} : ${seconds}`}</StyledTimer>
+        {isPaused ? (
+          <PlayBtn handlePlayBtn={handlePlayBtn} />
+        ) : (
+          <PauseBtn handlePauseBtn={handlePauseBtn} />
+        )}
+      </Container>
     </>
   );
 };
