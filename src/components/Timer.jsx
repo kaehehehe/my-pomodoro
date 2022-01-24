@@ -1,9 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import PlayBtn from './PlayBtn';
 import PauseBtn from './PauseBtn';
 import Modal from './Modal';
-import { GlobalStyles } from '../styles/theme';
 import styled from 'styled-components';
+import { GlobalContext } from '../App';
 
 const Container = styled.div`
   display: flex;
@@ -21,8 +21,12 @@ const StyledTimer = styled.div`
 `;
 
 const Message = styled.span`
+  margin-top: 30px;
   color: ${({ theme }) => theme.mainColor};
   font-size: 80px;
+
+  span {
+  }
 `;
 
 const Timer = () => {
@@ -31,6 +35,7 @@ const Timer = () => {
   const [seconds, setSeconds] = useState('00');
   const [open, setOpen] = useState(false);
   const intervalRef = useRef(null);
+  const { times } = useContext(GlobalContext);
   let TIME = 25 * 60 - 1;
 
   const timer = () => {
@@ -63,12 +68,11 @@ const Timer = () => {
 
   return (
     <>
-      <GlobalStyles />
       {open && <Modal setOpen={setOpen} reset={reset} />}
       <Container>
         <StyledTimer>{`${minutes} : ${seconds}`}</StyledTimer>
         {isPaused ? <PlayBtn start={start} /> : <PauseBtn setOpen={setOpen} />}
-        <Message>앞으로 4 세트 더!</Message>
+        <Message>앞으로 {times} 세트 더!</Message>
       </Container>
     </>
   );

@@ -16,10 +16,10 @@ const StyledBtn = styled(Button)`
   }
 `;
 
-const SettingBtn = () => {
+const SettingBtn = ({ setShowMenu, showMenu }) => {
   return (
     <StyledBtn>
-      <FiSettings />
+      <FiSettings onClick={() => setShowMenu(!showMenu)} />
     </StyledBtn>
   );
 };

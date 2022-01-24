@@ -1,17 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Background } from '../styles/background';
 
-const Container = styled.div`
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.75);
+const Container = styled(Background)`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100;
 `;
 
 const Card = styled.div`
@@ -52,8 +46,8 @@ const NoBtn = styled(YesBtn)`
 `;
 
 const Modal = ({ setOpen, reset }) => {
-  const handleClickContainer = (e) => {
-    if (e.target.id === 'container') {
+  const handleClickBackground = (e) => {
+    if (e.target.id === 'bg') {
       setOpen(false);
     }
   };
@@ -67,7 +61,7 @@ const Modal = ({ setOpen, reset }) => {
   };
 
   return (
-    <Container id="container" onClick={handleClickContainer}>
+    <Container id="bg" onClick={handleClickBackground}>
       <Card>
         <Text>
           벌써 그만두시나요?
