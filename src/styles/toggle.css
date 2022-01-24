@@ -20,7 +20,7 @@
   right: 0;
   bottom: 0;
 
-  background-color: skyblue;
+  background-color: #9da7b2;
   border-radius: 32px;
 }
 
@@ -41,7 +41,6 @@
   content: '🌞';
   font-size: 22px;
   right: 5px;
-  bottom: 0px;
 }
 
 input:checked + .slider {
@@ -57,5 +56,4 @@ input:checked + span::after {
   content: '🌜';
   font-size: 22px;
   left: 3px;
-  bottom: -2px;
 }

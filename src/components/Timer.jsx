@@ -10,14 +10,19 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  height: 100vh;
 `;
 
 const StyledTimer = styled.div`
   color: ${({ theme }) => theme.mainColor};
-  font-size: 60px;
+  font-size: 120px;
   text-align: center;
   margin-bottom: 20px;
+`;
+
+const Message = styled.span`
+  color: ${({ theme }) => theme.mainColor};
+  font-size: 80px;
 `;
 
 const Timer = () => {
@@ -63,6 +68,7 @@ const Timer = () => {
       <Container>
         <StyledTimer>{`${minutes} : ${seconds}`}</StyledTimer>
         {isPaused ? <PlayBtn start={start} /> : <PauseBtn setOpen={setOpen} />}
+        <Message>앞으로 4 세트 더!</Message>
       </Container>
     </>
   );

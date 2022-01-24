@@ -19,7 +19,7 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 400px;
+  width: 420px;
   padding: 18px;
   margin: 0 15px;
   border-radius: 8px;
@@ -28,7 +28,7 @@ const Card = styled.div`
 `;
 
 const Text = styled.span`
-  font-size: 18px;
+  font-size: 35px;
   margin-bottom: 15px;
 `;
 
@@ -38,9 +38,10 @@ const Buttons = styled.div`
 
 const YesBtn = styled.button`
   width: 70px;
-  font-size: 16px;
+  height: 40px;
+  line-height: 45px;
+  font-size: 28px;
   margin-right: 30px;
-  padding: 5px 10px;
   border-radius: 20px;
   background-color: ${({ theme }) => theme.modalBtn};
   color: ${({ theme }) => theme.modalBtnText};
