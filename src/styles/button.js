@@ -4,4 +4,5 @@ export const Button = styled.button`
   font-size: 60px;
   color: ${({ theme }) => theme.mainColor};
   background-color: transparent;
+  height: 60px;
 `;
