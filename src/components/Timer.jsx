@@ -32,7 +32,7 @@ const Timer = () => {
   const [seconds, setSeconds] = useState('00');
   const [open, setOpen] = useState(false);
   const intervalRef = useRef(null);
-  const { times, setTimes, setConfetti } = useContext(GlobalContext);
+  const { times, setTimes, setCompleted } = useContext(GlobalContext);
   let TIME = 25 * 60 - 1;
 
   const timer = () => {
@@ -52,7 +52,7 @@ const Timer = () => {
         intervalRef.current = null;
         setTimes(times - 1);
         if (times === 1) {
-          setConfetti(true);
+          setCompleted(true);
         }
         setMinutes('25');
         setSeconds('00');
