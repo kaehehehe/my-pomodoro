@@ -24,9 +24,6 @@ const Message = styled.span`
   margin-top: 30px;
   color: ${({ theme }) => theme.mainColor};
   font-size: 80px;
-
-  span {
-  }
 `;
 
 const Timer = () => {
@@ -35,7 +32,7 @@ const Timer = () => {
   const [seconds, setSeconds] = useState('00');
   const [open, setOpen] = useState(false);
   const intervalRef = useRef(null);
-  const { times } = useContext(GlobalContext);
+  const { times, setTimes, setConfetti } = useContext(GlobalContext);
   let TIME = 25 * 60 - 1;
 
   const timer = () => {
@@ -53,6 +50,13 @@ const Timer = () => {
       if (TIME === -1) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
+        setTimes(times - 1);
+        if (times === 1) {
+          setConfetti(true);
+        }
+        setMinutes('25');
+        setSeconds('00');
+        setIsPaused(true);
       }
     }, 1000);
   };

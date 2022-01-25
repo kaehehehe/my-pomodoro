@@ -6,17 +6,20 @@ import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme, GlobalStyles } from './styles/theme';
 import SettingBtn from './components/SettingBtn';
 import SettingMenu from './components/SettingMenu';
+import Completed from './components/Completed';
 export const GlobalContext = createContext(null);
 
 const App = () => {
   const [theme, setTheme] = useState('dark');
   const [showMenu, setShowMenu] = useState(false);
-  const [times, setTimes] = useState(4);
+  const [times, setTimes] = useState(1);
+  const [confetti, setConfetti] = useState(false);
 
   return (
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
       <GlobalStyles />
-      <GlobalContext.Provider value={{ times, setTimes }}>
+      {confetti && <Completed />}
+      <GlobalContext.Provider value={{ times, setTimes, setConfetti }}>
         <SettingBtn setShowMenu={setShowMenu} showMenu={showMenu} />
         {showMenu && <SettingMenu setShowMenu={setShowMenu} />}
         <Timer />
