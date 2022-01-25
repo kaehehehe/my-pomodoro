@@ -3,11 +3,13 @@ import { FaPlayCircle } from 'react-icons/fa';
 import styled from 'styled-components';
 import { Button } from '../styles/button';
 
-const StyledBtn = styled(Button)``;
+const StyledBtn = styled(Button)`
+  display: ${({ breakTime }) => (breakTime ? 'none' : 'block')};
+`;
 
-const PlayBtn = ({ start }) => {
+const PlayBtn = ({ start, breakTime }) => {
   return (
-    <StyledBtn onClick={start}>
+    <StyledBtn onClick={start} breakTime={breakTime}>
       <FaPlayCircle />
     </StyledBtn>
   );

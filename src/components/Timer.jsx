@@ -4,6 +4,8 @@ import PauseBtn from './PauseBtn';
 import Modal from './Modal';
 import styled from 'styled-components';
 import { GlobalContext } from '../App';
+import FiveMinutesTimer from './FiveMinutesTimer';
+import { StyledTimer } from '../styles/timer';
 
 const Container = styled.div`
   display: flex;
@@ -13,12 +15,7 @@ const Container = styled.div`
   height: 100vh;
 `;
 
-const StyledTimer = styled.div`
-  color: ${({ theme }) => theme.mainColor};
-  font-size: 120px;
-  text-align: center;
-  margin-bottom: 20px;
-`;
+const TwentyFiveMinutesTimer = styled(StyledTimer)``;
 
 const Message = styled.span`
   margin-top: 30px;
@@ -31,6 +28,7 @@ const Timer = () => {
   const [minutes, setMinutes] = useState('25');
   const [seconds, setSeconds] = useState('00');
   const [open, setOpen] = useState(false);
+  const [breakTime, setBreakTime] = useState(false);
   const intervalRef = useRef(null);
   const { times, setTimes, setCompleted } = useContext(GlobalContext);
   let TIME = 25 * 60 - 1;
@@ -57,6 +55,7 @@ const Timer = () => {
         setMinutes('25');
         setSeconds('00');
         setIsPaused(true);
+        setBreakTime(true);
       }
     }, 1000);
   };
@@ -74,9 +73,21 @@ const Timer = () => {
     <>
       {open && <Modal setOpen={setOpen} reset={reset} />}
       <Container>
-        <StyledTimer>{`${minutes} : ${seconds}`}</StyledTimer>
-        {isPaused ? <PlayBtn start={start} /> : <PauseBtn setOpen={setOpen} />}
-        <Message>앞으로 {times} 세트 더!</Message>
+        {breakTime ? (
+          <FiveMinutesTimer setBreakTime={setBreakTime} />
+        ) : (
+          <TwentyFiveMinutesTimer>{`${minutes} : ${seconds}`}</TwentyFiveMinutesTimer>
+        )}
+        {isPaused ? (
+          <PlayBtn start={start} breakTime={breakTime} />
+        ) : (
+          <PauseBtn setOpen={setOpen} />
+        )}
+        {breakTime ? (
+          <Message>휴식 시간입니다.</Message>
+        ) : (
+          <Message>앞으로 {times} 세트 더!</Message>
+        )}
       </Container>
     </>
   );
