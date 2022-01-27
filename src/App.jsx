@@ -11,10 +11,12 @@ import RestartModal from './components/RestartModal';
 export const GlobalContext = createContext(null);
 
 const App = () => {
-  const [theme, setTheme] = useState('dark');
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'dark';
+  const [theme, setTheme] = useState(currentTheme);
   const [showMenu, setShowMenu] = useState(false);
   const [times, setTimes] = useState(4);
   const [completed, setCompleted] = useState(false);
+
 
   return (
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>

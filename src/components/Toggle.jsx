@@ -10,7 +10,15 @@ const Container = styled.div`
 
 const Toggle = ({ theme, setTheme }) => {
   const handleToggle = () => {
-    theme === 'dark' ? setTheme('light') : setTheme('dark');
+    if (theme === 'dark') {
+      setTheme('light');
+      if (localStorage.getItem('theme')) localStorage.setItem('theme', 'light');
+      else localStorage.setItem('theme', 'light');
+    } else {
+      setTheme('dark');
+      if (localStorage.getItem('theme')) localStorage.setItem('theme', 'dark');
+      else localStorage.setItem('theme', 'dark');
+    }
   };
   return (
     <Container>
