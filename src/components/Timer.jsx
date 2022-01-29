@@ -55,7 +55,11 @@ const Timer = () => {
         setMinutes('25');
         setSeconds('00');
         setIsPaused(true);
-        setBreakTime(true);
+        if (times === 1) {
+          return;
+        } else {
+          setBreakTime(true);
+        }
       }
     }, 1000);
   };

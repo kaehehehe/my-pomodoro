@@ -17,7 +17,6 @@ const App = () => {
   const [times, setTimes] = useState(4);
   const [completed, setCompleted] = useState(false);
 
-
   return (
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
       <GlobalStyles />
