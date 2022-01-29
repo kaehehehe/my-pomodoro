@@ -12,12 +12,10 @@ const Toggle = ({ theme, setTheme }) => {
   const handleToggle = () => {
     if (theme === 'dark') {
       setTheme('light');
-      if (localStorage.getItem('theme')) localStorage.setItem('theme', 'light');
-      else localStorage.setItem('theme', 'light');
+      localStorage.setItem('theme', 'light');
     } else {
       setTheme('dark');
-      if (localStorage.getItem('theme')) localStorage.setItem('theme', 'dark');
-      else localStorage.setItem('theme', 'dark');
+      localStorage.setItem('theme', 'dark');
     }
   };
   return (
