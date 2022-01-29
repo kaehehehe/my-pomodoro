@@ -21,11 +21,16 @@ const StyledBtn = styled(Button)`
 `;
 
 const RestartBtn = () => {
-  const { setCompleted } = useContext(GlobalContext);
+  const { setCompleted, setTimes } = useContext(GlobalContext);
+
+  const handleRestartBtn = () => {
+    setCompleted(false);
+    setTimes(localStorage.getItem('times') ? localStorage.getItem('times') : 4);
+  };
 
   return (
     <StyledBtn>
-      <VscDebugRestart onClick={() => setCompleted(false)} />
+      <VscDebugRestart onClick={handleRestartBtn} />
     </StyledBtn>
   );
 };
