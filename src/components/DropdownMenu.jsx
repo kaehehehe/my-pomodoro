@@ -64,18 +64,22 @@ const DropdownMenu = ({ showDropdown, setShowDropdown }) => {
       case '1':
         setTimes(1);
         setShowDropdown(false);
+        localStorage.setItem('times', 1);
         break;
       case '2':
         setTimes(2);
         setShowDropdown(false);
+        localStorage.setItem('times', 2);
         break;
       case '3':
         setTimes(3);
         setShowDropdown(false);
+        localStorage.setItem('times', 3);
         break;
       case '4':
         setTimes(4);
         setShowDropdown(false);
+        localStorage.setItem('times', 4);
         break;
       default:
         break;
