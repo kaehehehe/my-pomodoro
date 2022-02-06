@@ -24,13 +24,12 @@ const Message = styled.span`
 `;
 
 const Timer = () => {
-  const [isPaused, setIsPaused] = useState(true);
   const [minutes, setMinutes] = useState('25');
   const [seconds, setSeconds] = useState('00');
   const [open, setOpen] = useState(false);
   const [breakTime, setBreakTime] = useState(false);
   const intervalRef = useRef(null);
-  const { times, setTimes, setCompleted } = useContext(GlobalContext);
+  const { isPaused, setIsPaused, times, setTimes, setCompleted } = useContext(GlobalContext);
   let TIME = 25 * 60 - 1;
 
   const timer = () => {

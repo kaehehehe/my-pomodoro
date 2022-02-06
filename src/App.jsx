@@ -18,6 +18,7 @@ const App = () => {
     ? Number(localStorage.getItem('times'))
     : 4;
   const [theme, setTheme] = useState(currentTheme);
+  const [isPaused, setIsPaused] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
   const [times, setTimes] = useState(selectedTimes);
   const [completed, setCompleted] = useState(false);
@@ -25,8 +26,16 @@ const App = () => {
   return (
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
       <GlobalStyles />
-      <GlobalContext.Provider value={{ times, setTimes, setCompleted }}>
-        <SettingBtn setShowMenu={setShowMenu} showMenu={showMenu} />
+      <GlobalContext.Provider
+        value={{
+          isPaused,
+          setIsPaused,
+          times,
+          setTimes,
+          setCompleted,
+        }}
+      >
+        <SettingBtn setShowMenu={setShowMenu} showMenu={showMenu} isPaused={isPaused} />
         {showMenu && <SettingMenu setShowMenu={setShowMenu} />}
         {completed ? (
           <>

@@ -10,15 +10,16 @@ const StyledBtn = styled(Button)`
   top: 20px;
   left: 20px;
   transition: all 300ms ease;
+  display: ${({ isPaused }) => (isPaused ? 'block' : 'none')};
 
   &:hover {
     transform: rotate(360deg);
   }
 `;
 
-const SettingBtn = ({ setShowMenu, showMenu }) => {
+const SettingBtn = ({ setShowMenu, showMenu, isPaused }) => {
   return (
-    <StyledBtn>
+    <StyledBtn isPaused={isPaused}>
       <FiSettings onClick={() => setShowMenu(!showMenu)} />
     </StyledBtn>
   );
